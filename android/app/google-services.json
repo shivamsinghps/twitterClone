@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "261635348989",
+    "project_id": "hashtaglearningnimir",
+    "storage_bucket": "hashtaglearningnimir.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:261635348989:android:0bca58eb95e6543deda194",
+        "android_client_info": {
+          "package_name": "com.example.hashtaglearning"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "261635348989-la856rgfql0v32jl1quv0jcluk2dl1vh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hashtaglearning",
+            "certificate_hash": "f6ffe70bab70d112382a75be8106e64678f1ef27"
+          }
+        },
+        {
+          "client_id": "261635348989-69o3n3n37bebn8e8naaq82eev5tdqm5m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxqJtgRcJUX7FYDRCtTytDfGfhPpsW-uM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "261635348989-69o3n3n37bebn8e8naaq82eev5tdqm5m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
