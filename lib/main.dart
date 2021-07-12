@@ -1,8 +1,15 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
 // Import the firebase_core plugin
 import 'package:firebase_core/firebase_core.dart';
-import 'package:hashtaglearning/auth/signup.dart';
+import 'package:hashtaglearning/screens/auth/signup.dart';
+import 'package:hashtaglearning/screens/wrapper.dart';
+import 'package:hashtaglearning/services/auth.dart';
+import 'package:provider/provider.dart';
+
+import 'models/user.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -39,12 +46,10 @@ class _AppState extends State<App> {
         }
         // Once complete, show your application
         if (snapshot.connectionState == ConnectionState.done) {
-          return MaterialApp(
-            title: 'Flutter Demo',
-            theme: ThemeData(
-              primarySwatch: Colors.blue,
-            ),
-            home: SignUp(),
+          return StreamProvider<UserModel?>.value(
+            value: AuthService().user,
+            initialData: UserModel(),
+            child: MaterialApp(home: Wrapper()),
           );
         }
 
