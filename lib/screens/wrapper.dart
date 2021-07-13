@@ -1,9 +1,10 @@
-// ignore_for_file: unnecessary_null_comparison, avoid_print
+// ignore_for_file: unnecessary_null_comparison, avoid_print, prefer_const_constructors
 
 import 'package:flutter/material.dart';
 import 'package:hashtaglearning/models/user.dart';
 import 'package:hashtaglearning/screens/auth/signup.dart';
 import 'package:hashtaglearning/screens/main/home.dart';
+import 'package:hashtaglearning/screens/main/posts/add_post.dart';
 import 'package:provider/provider.dart';
 
 class Wrapper extends StatelessWidget {
@@ -17,7 +18,13 @@ class Wrapper extends StatelessWidget {
     if (user == null) {
       return SignUp();
     } else {
-      return const Home();
+      return MaterialApp(
+        initialRoute: '/',
+        routes: {
+          '/': (context) => Home(),
+          '/addpost': (context) => Add(),
+        },
+      );
     }
   }
 }

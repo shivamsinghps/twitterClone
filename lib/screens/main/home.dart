@@ -21,6 +21,11 @@ class Home extends StatelessWidget {
               label: Text('Sign Out'))
         ],
       ),
+      floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.pushNamed(context, '/addpost');
+          },
+          child: Icon(Icons.add)),
     );
   }
 }

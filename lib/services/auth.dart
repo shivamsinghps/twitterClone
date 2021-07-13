@@ -11,7 +11,7 @@ class AuthService {
   }
 
   Stream<UserModel?> get user {
-    return auth.authStateChanges().map((user) => _userFromFirebase(user));
+    return auth.authStateChanges().map((user) => _userFromFirebase(user!));
   }
 
   Future signUpAction(email, password) async {
