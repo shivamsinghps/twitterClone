@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_print
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hashtaglearning/models/user.dart';
 
@@ -7,7 +8,7 @@ class AuthService {
   FirebaseAuth auth = FirebaseAuth.instance;
 
   UserModel? _userFromFirebase(User user) {
-    return user != null ? UserModel(id: user.uid) : null;
+    return (user as dynamic) != null ? UserModel(id: user.uid) : null;
   }
 
   Stream<UserModel?> get user {
@@ -16,10 +17,14 @@ class AuthService {
 
   Future signUpAction(email, password) async {
     try {
-      User user = (await auth.createUserWithEmailAndPassword(
-          email: email, password: password)) as User;
-      print(user);
-      _userFromFirebase(user);
+      UserCredential user = await auth.createUserWithEmailAndPassword(
+          email: email, password: password);
+
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(user.user?.uid)
+          .set({'name': email, 'email': email});
+      _userFromFirebase(user.user!);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         print('The password provided is too weak.');
@@ -50,9 +55,10 @@ class AuthService {
 
   Future signOutAction() async {
     try {
-      return auth.signOut();
+      return await auth.signOut();
     } catch (e) {
-      print(e.toString());
+      print(e);
+      return null;
     }
   }
 }

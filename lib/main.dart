@@ -47,14 +47,18 @@ class _AppState extends State<App> {
         // Once complete, show your application
         if (snapshot.connectionState == ConnectionState.done) {
           return StreamProvider<UserModel?>.value(
+            catchError: (_, err) => null,
             value: AuthService().user,
-            initialData: UserModel(),
+            initialData: null,
             child: MaterialApp(home: Wrapper()),
           );
         }
 
         // Otherwise, show something whilst waiting for initialization to complete
-        return const Text("Loading");
+        return const Text(
+          "Loading",
+          textDirection: TextDirection.ltr,
+        );
       },
     );
   }

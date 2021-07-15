@@ -7,7 +7,7 @@ class PostService {
     return snapshot.docs.map((doc) {
       return PostModel(
         id: doc.id,
-        title: (doc.data() as dynamic)['title'],
+        title: (doc.data() as dynamic)['title'] ?? '',
         description: (doc.data() as dynamic)['description'] ?? '',
         tags: (doc.data() as dynamic)['tags'] ?? '',
         creator: (doc.data() as dynamic)['creator'] ?? '',
@@ -29,7 +29,7 @@ class PostService {
 
   Stream<List<PostModel>> getPostsByUser(uid) {
     return FirebaseFirestore.instance
-        .collection("posts")
+        .collection("post")
         .where('creator', isEqualTo: uid)
         .snapshots()
         .map(_postListFromSnapshot);

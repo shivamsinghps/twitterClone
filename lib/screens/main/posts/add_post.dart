@@ -35,7 +35,7 @@ class _AddState extends State<Add> {
                         labelText: "Enter Title",
                         fillColor: Colors.white,
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(25.0),
+                          borderRadius: BorderRadius.circular(15.0),
                           borderSide: BorderSide(),
                         ),
                         //fillColor: Colors.green

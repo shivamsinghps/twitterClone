@@ -21,6 +21,34 @@ class Home extends StatelessWidget {
               label: Text('Sign Out'))
         ],
       ),
+      drawer: Drawer(
+        child: ListView(
+          children: <Widget>[
+            DrawerHeader(
+              child: Text('drawer header'),
+              decoration: BoxDecoration(color: Colors.blue),
+            ),
+            ListTile(
+              title: Text('Profile'),
+              onTap: () {
+                Navigator.pushNamed(context, '/profile');
+              },
+            ),
+            ListTile(
+              title: Text('Edit'),
+              onTap: () {
+                Navigator.pushNamed(context, '/edit');
+              },
+            ),
+            ListTile(
+              title: Text('Logout'),
+              onTap: () async {
+                _authService.signOutAction();
+              },
+            ),
+          ],
+        ),
+      ),
       floatingActionButton: FloatingActionButton(
           onPressed: () {
             Navigator.pushNamed(context, '/addpost');
